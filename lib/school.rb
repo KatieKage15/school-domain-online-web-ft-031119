@@ -1,21 +1,18 @@
 class School
-
-  def initialize(school)
-    @school = school
-  end
-
-  def school
-    @school
+  attr_accessor :name, :roster
+  
+  def initialize(name)
+    @name = name
+    roster = {}
   end
 
   def add_student(student_name, grade)
-  roster = {}
-  roster["grade"] = []
-  roster["grade"] << "student_name"
-  roster.each do |name, grade|
-    puts "#{name}: #{grade}"
-    end
+    roster[grade] ||= []
+    roster[grade] << student_name
   end
-end
 
-school = School.new("Bayside High School")
+  def grade(student_grade)
+    roster[student_grade]
+  end
+
+  
